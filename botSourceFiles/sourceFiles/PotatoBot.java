@@ -17,7 +17,7 @@ public class PotatoBot {
 		
 		Charset charset = Charset.defaultCharset();
 		
-		Path filePath = new File("C:\\PotatoBot Files\\BotInfo").toPath();
+		Path filePath = new File("C:\\PotatoBot Files\\BotInfo.txt").toPath();
 		List<String> stringList = null;
 		try {
 			stringList = Files.readAllLines(filePath, charset);
