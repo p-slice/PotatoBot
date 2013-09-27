@@ -45,7 +45,6 @@ public class PotatoBot {
 		potatoBot.getListenerManager().addListener(new chatFiles.EventReply());
 		potatoBot.getListenerManager().addListener(new chatFiles.PrivateReply());
 		potatoBot.getListenerManager().addListener(new chatFiles.PublicReply());
-		potatoBot.getListenerManager().addListener(new sourceFiles.IgnoreMode());
 		
 		potatoBot.setName(name);
 		potatoBot.setLogin(login);

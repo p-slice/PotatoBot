@@ -10,6 +10,7 @@ public class PrivateMaster extends ListenerAdapter {
 	
 	String chatChanName;
 	String actionMessage;
+	boolean toggleIgnore = true;
 	
 	public void onPrivateMessage(PrivateMessageEvent event){
 		
@@ -27,7 +28,6 @@ public class PrivateMaster extends ListenerAdapter {
 				String command = messageSplit[0];
 				
 				if (command.equalsIgnoreCase(".test")){
-					event.respond("3test");
 					return;
 				}
 				if (command.equalsIgnoreCase(".action")){
@@ -58,6 +58,16 @@ public class PrivateMaster extends ListenerAdapter {
 				}
 				if (command.equalsIgnoreCase(".Channel")){
 					event.respond("Currently talking in " + chatChanName);
+					return;
+				}
+				if (command.equalsIgnoreCase(".ignore")){
+					String ignoreType = messageSplit[1];
+					if (messageSplit[2].equalsIgnoreCase("Off"))
+						toggleIgnore = false;
+					if (messageSplit[2].equalsIgnoreCase("On"))
+						toggleIgnore = true;
+					sourceFiles.IgnoreMode.ignoreMode(ignoreType, toggleIgnore);
+					event.respond("Ignore " + messageSplit[1] + " set to: " + messageSplit[2]);
 					return;
 				}
 				if (command.equalsIgnoreCase(".masters")){
