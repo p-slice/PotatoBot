@@ -19,12 +19,6 @@ public class GeneralMaster extends ListenerAdapter{
 		String masterList = sourceFiles.UserList.getMasterList();
 		String ignorePlayers = sourceFiles.IgnoreMode.getIgnorePlayers();
 		String ownNick = event.getBot().getNick().toString();
-		String black = "1";
-		String blue = "2";
-		//String green = "3";
-		String red = "4";
-		//String bold = "";
-		//String normal = "";
 		
 		if (!ignorePlayers.contains(masterName)){
 			
@@ -47,12 +41,13 @@ public class GeneralMaster extends ListenerAdapter{
 					return;
 				}
 				if (message.equalsIgnoreCase(".math help")){
-					event.getBot().sendNotice(userName, "To ask me an equation, type 'PotatoBot, solve <" + blue + "number" + black + "> <" + red + "operation" + black + "> <" + blue + "number" + black + ">'.");
-					event.getBot().sendNotice(userName, "Operations include: '+', '-', '*', '/' and '^'.");
-					event.getBot().sendNotice(userName, "Example: 'PotatoBot, solve 1 + 1'");
+					String [] stringArray = fileManipulators.FileReader.getMathHelp();
+					for(int i = 0; i < stringArray.length; i++){
+						event.getBot().sendNotice(userName, stringArray[i]);
+					}
 				}
 				if (message.equalsIgnoreCase(".Version"))
-					event.getBot().sendMessage(chanName, "Currently running ~PotatoBot v. 3.1.7");	
+					event.getBot().sendMessage(chanName, "Currently running ~PotatoBot v. 3.1.7");
 				if (message.toLowerCase().equalsIgnoreCase(ownNick + "?")){
 					if (eventInProgress == true){
 						event.getBot().sendMessage(chanName, "My attention is currently directed elsewhere!");
