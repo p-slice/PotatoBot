@@ -7,10 +7,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.List;
 
-import org.pircbotx.hooks.ListenerAdapter;
-
-@SuppressWarnings("rawtypes")
-public class FileReader extends ListenerAdapter{
+public class FileReader{
 	
 	static Charset charset = Charset.defaultCharset();
 	
@@ -63,6 +60,30 @@ public class FileReader extends ListenerAdapter{
     public static String[] getCommandList(){
     	Charset charset = Charset.defaultCharset();
     	Path filePath = new File("C:\\PotatoBot Files\\CommandList.txt").toPath();
+		List<String> stringList = null;
+		try {
+			stringList = Files.readAllLines(filePath, charset);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		String[] stringArray = stringList.toArray(new String[]{});
+		return stringArray;
+    }
+    public static String[] getMathHelp(){
+    	Charset charset = Charset.defaultCharset();
+    	Path filePath = new File("C:\\PotatoBot Files\\MathBotHelp.txt").toPath();
+		List<String> stringList = null;
+		try {
+			stringList = Files.readAllLines(filePath, charset);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		String[] stringArray = stringList.toArray(new String[]{});
+		return stringArray;
+    }
+    public static String[] getBotInfo(){
+    	Charset charset = Charset.defaultCharset();
+    	Path filePath = new File("C:\\PotatoBot Files\\BotInfo.txt").toPath();
 		List<String> stringList = null;
 		try {
 			stringList = Files.readAllLines(filePath, charset);

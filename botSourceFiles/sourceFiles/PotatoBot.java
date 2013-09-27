@@ -1,12 +1,5 @@
 package sourceFiles;
 
-import java.io.File;
-import java.io.IOException;
-import java.nio.charset.Charset;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.util.List;
-
 import org.pircbotx.PircBotX;
 import org.pircbotx.cap.SASLCapHandler;
 
@@ -15,46 +8,29 @@ public class PotatoBot {
 
 	public static void main(String[] args) {
 		
-		Charset charset = Charset.defaultCharset();
-		
-		Path filePath = new File("C:\\PotatoBot Files\\BotInfo.txt").toPath();
-		List<String> stringList = null;
-		try {
-			stringList = Files.readAllLines(filePath, charset);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		String[] stringArray = stringList.toArray(new String[]{});
-		
-		String name = stringArray[0];
-		String login = stringArray[1];
-		String user = stringArray[2];
-		String password = stringArray[3];
-		String server = stringArray[4];
-		String channel = stringArray[5];
-		
+		String[] botInfo = fileManipulators.FileReader.getBotInfo();
+		//Bot info is kept in seperate files as it contains private info.
 		PircBotX potatoBot = new PircBotX();
     
 		potatoBot.getListenerManager().addListener(new commandFiles.PrivateMaster());
 		potatoBot.getListenerManager().addListener(new commandFiles.PublicMaster());
 		potatoBot.getListenerManager().addListener(new commandFiles.GeneralMaster());
-		potatoBot.getListenerManager().addListener(new commandFiles.MathBot());
 		potatoBot.getListenerManager().addListener(new commandFiles.FileMaster());
 		potatoBot.getListenerManager().addListener(new chatFiles.EventReply());
 		potatoBot.getListenerManager().addListener(new chatFiles.PrivateReply());
 		potatoBot.getListenerManager().addListener(new chatFiles.PublicReply());
 		
-		potatoBot.setName(name);
-		potatoBot.setLogin(login);
+		potatoBot.setName(botInfo[0]);
+		potatoBot.setLogin(botInfo[1]);
 		potatoBot.setVerbose(false);
 		potatoBot.setAutoNickChange(false);
 		potatoBot.setCapEnabled(true);
-		potatoBot.getCapHandlers().add(new SASLCapHandler(user, password));
+		potatoBot.getCapHandlers().add(new SASLCapHandler(botInfo[2], botInfo[3]));
 
 		try {
             
-            potatoBot.connect(server);
-            potatoBot.joinChannel(channel);
+            potatoBot.connect(botInfo[4]);
+            potatoBot.joinChannel(botInfo[5]);
 		}
 		catch (Exception ex) {
             ex.printStackTrace();
