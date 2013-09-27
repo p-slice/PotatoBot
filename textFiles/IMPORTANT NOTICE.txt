@@ -1,0 +1,6 @@
+Please note:
+
+1: When using the bot, these files are not here in relation to the bot. They are saved in my C:\PotatoBot Files\ folder.
+2: This is not all of the text files used - there are others that I have not pushed, nor do I plan to.
+3: The purpose of these text files is to facilitate the use of the bot without constantly restarting it to change messages.
+4: Due to the fact that they are usually varying in some way or another, this files will remain permanent (with a few exceptions) to be used as example files.
