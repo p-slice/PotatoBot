@@ -39,9 +39,7 @@ public class PotatoBot {
 		potatoBot.getListenerManager().addListener(new commandFiles.PublicMaster());
 		potatoBot.getListenerManager().addListener(new commandFiles.GeneralMaster());
 		potatoBot.getListenerManager().addListener(new commandFiles.MathBot());
-		potatoBot.getListenerManager().addListener(new fileManipulators.FileOutput());
-		potatoBot.getListenerManager().addListener(new fileManipulators.FileReader());
-		potatoBot.getListenerManager().addListener(new fileManipulators.FileEditor());
+		potatoBot.getListenerManager().addListener(new commandFiles.FileMaster());
 		potatoBot.getListenerManager().addListener(new chatFiles.EventReply());
 		potatoBot.getListenerManager().addListener(new chatFiles.PrivateReply());
 		potatoBot.getListenerManager().addListener(new chatFiles.PublicReply());
