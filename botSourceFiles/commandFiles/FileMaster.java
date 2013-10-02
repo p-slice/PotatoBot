@@ -34,9 +34,8 @@ public class FileMaster extends ListenerAdapter{
 					event.getBot().sendMessage(chanName, "File doesn't exist!");
 					return;
 				}
-				/*
-				if (message.length() == 3){
-					String[] wholeText = fileManipulators.FileReader.wholeText(fileName);
+				if (messageSplit.length == 3){
+					String[] wholeText = textFiles.FileReader.wholeText(fileName);
 					if (wholeText.length > 3){
 						event.getBot().sendMessage(chanName, "That's a fairly big file. Still want me to read it?");
 						WaitForQueue queue = new WaitForQueue(event.getBot());
@@ -51,7 +50,8 @@ public class FileMaster extends ListenerAdapter{
 								event.getBot().sendMessage(chanName, "Well, here goes...");
 								queue.close();
 								for(int i = 0; i < wholeText.length; i++){
-									event.getBot().sendMessage(chanName, wholeText[i]);
+									int q = i + 1;
+									event.getBot().sendMessage(chanName, "Line " + q + ": " + wholeText[i]);
 								}
 								return;
 							}
@@ -63,17 +63,16 @@ public class FileMaster extends ListenerAdapter{
 						}
 					}
 				}
-				*/
-				//if (message.length() == 4){
+				if (messageSplit.length == 4){
 					int s = Integer.parseInt(messageSplit[3]) - 1;
 					int q = s + 1;
-					String lineText = fileManipulators.FileReader.lineText(fileName, s);
+					String lineText = textFiles.FileReader.lineText(fileName, s);
 					event.getBot().sendMessage(chanName, "Line " + q + " from '" + fileName + ".txt': " + lineText);
 					return;
-				//}
+				}
 			}
 			if (command.equalsIgnoreCase("Link")){
-				String link = fileManipulators.FileReader.link(messageSplit[2]);
+				String link = textFiles.FileReader.link(messageSplit[2]);
 				event.getBot().sendMessage(chanName, link);
 				return;
 			}
@@ -95,7 +94,7 @@ public class FileMaster extends ListenerAdapter{
 						}
 						if (currentEvent.getMessage().equalsIgnoreCase("Yes")){
 							event.getBot().sendMessage(chanName, "Saving file...");
-							fileManipulators.FileOutput.saveText(fileName, saveText);
+							textFiles.FileOutput.saveText(fileName, saveText);
 							queue.close();
 							return;
 						}
@@ -103,7 +102,7 @@ public class FileMaster extends ListenerAdapter{
 				}
 				else {
 					event.getBot().sendMessage(chanName, "Saved to '" + fileName + ".txt'.");
-					fileManipulators.FileOutput.saveText(fileName, saveText);
+					textFiles.FileOutput.saveText(fileName, saveText);
 				}
 			}
 			if (command.equalsIgnoreCase("Edit")){
@@ -132,7 +131,7 @@ public class FileMaster extends ListenerAdapter{
 			if (command.equalsIgnoreCase("Replace")
 					&& messageSplit[3].equalsIgnoreCase("with")
 					&& editToggle == true){				
-				String newLine = fileManipulators.FileEditor.replaceText(editFile, n, messageSplit[2], messageSplit[4]);			
+				String newLine = textFiles.FileEditor.replaceText(editFile, n, messageSplit[2], messageSplit[4]);			
 				event.getBot().sendMessage(chanName, "Now says: " + newLine);
 				return;
 			}
@@ -142,7 +141,7 @@ public class FileMaster extends ListenerAdapter{
 				for(int m = 3; m < messageSplit.length; m++){
 					newText = newText + " " + messageSplit[m];
 				}
-				String newLine = fileManipulators.FileEditor.addText(editFile, n, newText);
+				String newLine = textFiles.FileEditor.addText(editFile, n, newText);
 				event.getBot().sendMessage(chanName, "Now says: " + newLine);
 			}
 			if (command.equalsIgnoreCase("Finish")

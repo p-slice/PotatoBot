@@ -28,6 +28,10 @@ public class PrivateMaster extends ListenerAdapter {
 				String command = messageSplit[0];
 				
 				if (command.equalsIgnoreCase(".test")){
+					if (messageSplit.length == 2)
+						System.out.println(message.length());
+					if (messageSplit.length == 3)
+						System.out.println(message.length());
 					return;
 				}
 				if (command.equalsIgnoreCase(".action")){
@@ -102,7 +106,7 @@ public class PrivateMaster extends ListenerAdapter {
 					return;
 				}
 				if (command.equals("kick")){
-					String kickReason = randomMessage.KickMessage.getKickReason();
+					String kickReason = textFiles.RandomFileReader.getRandMessage("KickReason");
 					User playerToKick = event.getBot().getUser(messageSplit[2]);
 					Channel kickChanName = event.getBot().getChannel(messageSplit[3]);
 					event.getBot().kick(kickChanName, playerToKick, kickReason);

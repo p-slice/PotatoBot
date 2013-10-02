@@ -20,12 +20,12 @@ public class PublicMaster extends ListenerAdapter{
 		if (masterList.contains(masterName) && message.startsWith(ownNick + ",")){
 			
 			if (command.equalsIgnoreCase("go") && messageSplit[2].equalsIgnoreCase("away")) {
-				String quitMessage = randomMessage.QuitMessage.getQuitMessage();
+				String quitMessage = textFiles.RandomFileReader.getRandMessage("QuitMessage1");
 				event.getBot().sendMessage(chanName, quitMessage);
 				event.getBot().quitServer("Bai bai");
 			}
 			if (command.equalsIgnoreCase("kick")) {
-				String kickReason = randomMessage.KickMessage.getKickReason();
+				String kickReason = textFiles.RandomFileReader.getRandMessage("KickMessage");
 				User playerToKick = event.getBot().getUser(messageSplit[2]);
 				event.getBot().kick(chanName, playerToKick, kickReason);
 			}
@@ -49,26 +49,21 @@ public class PublicMaster extends ListenerAdapter{
 		if (!masterList.contains(masterName)){
 			
 			if (message.equalsIgnoreCase("PotatoBot, go away")) {
-				String antiQuit = randomMessage.AntiQuitMessage.getAntiQuitMessage();
+				String antiQuit = textFiles.RandomFileReader.getRandMessage("AntiQuitMessage1");
 				event.getBot().sendMessage(chanName, antiQuit);
 				return;
 			}
 			if (message.startsWith("PotatoBot, kick")) {
-				String antiKick = randomMessage.KickMessage.getAntiKickReason();
+				String antiKick = textFiles.RandomFileReader.getRandMessage("AntiKickMessage");
 				event.getBot().sendMessage(chanName, antiKick);
 			}
-			if (message.equalsIgnoreCase("PotatoBot, leave")){
-				String antiQuit = randomMessage.AntiQuitMessage.getAntiQuitMessage();
-				event.getBot().sendMessage(chanName, antiQuit);
-				return;
-			}
 			if (message.startsWith("PotatoBot, join")) {
-				String antiJoin = randomMessage.GenericMessage.getAntiJoinMessage();
+				String antiJoin = textFiles.RandomFileReader.getRandMessage("AntiJoinMessage");
 				event.getBot().sendMessage(chanName, antiJoin);
 				return;
 			}
 			if (message.startsWith("PotatoBot, leave")) {
-				String antiQuit = randomMessage.AntiQuitMessage.getAntiQuitMessage();
+				String antiQuit = textFiles.RandomFileReader.getRandMessage("AntiQuitMessage1");
 				event.getBot().sendMessage(chanName, antiQuit);
 				return;
 			}

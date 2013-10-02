@@ -1,4 +1,4 @@
-package fileManipulators;
+package textFiles;
 
 import java.io.*;
 import java.nio.charset.Charset;

@@ -1,4 +1,4 @@
-package fileManipulators;
+package textFiles;
 
 import java.io.File;
 import java.io.IOException;

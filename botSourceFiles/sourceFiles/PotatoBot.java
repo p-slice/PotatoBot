@@ -8,7 +8,7 @@ public class PotatoBot {
 
 	public static void main(String[] args) {
 		
-		String[] botInfo = fileManipulators.FileReader.getBotInfo();
+		String[] botInfo = textFiles.FileReader.getBotInfo();
 		//Bot info is kept in seperate files as it contains private info.
 		PircBotX potatoBot = new PircBotX();
     

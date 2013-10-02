@@ -34,7 +34,7 @@ public class PublicReply extends ListenerAdapter{
 						event.getBot().sendMessage(chanName, "Master");
 						return;
 					}
-					String response = randomMessage.GenericMessage.getNameResponse();
+					String response = textFiles.RandomFileReader.getRandMessage("NameResponse");
 					if (response.equals("*Username*")){
 						event.getBot().sendMessage(chanName, userName);
 						return;
