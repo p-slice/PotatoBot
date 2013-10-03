@@ -4,7 +4,6 @@ import org.pircbotx.PircBotX;
 import org.pircbotx.cap.SASLCapHandler;
 
 public class PotatoBot {
-	
 
 	public static void main(String[] args) {
 		
@@ -28,7 +27,6 @@ public class PotatoBot {
 		potatoBot.getCapHandlers().add(new SASLCapHandler(botInfo[2], botInfo[3]));
 
 		try {
-            
             potatoBot.connect(botInfo[4]);
             potatoBot.joinChannel(botInfo[5]);
 		}

@@ -21,7 +21,7 @@ public class RandomFileReader {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		String[] stringArray = stringList.toArray(new String[]{});		
+		String[] stringArray = stringList.toArray(new String[]{});
 		final String response = stringArray[rand.nextInt(stringArray.length)];
 		return response;
 

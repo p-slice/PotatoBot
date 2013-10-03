@@ -22,7 +22,6 @@ public class GeneralMaster extends ListenerAdapter{
 			
 			boolean ignoreCommands = sourceFiles.IgnoreMode.getIgnoreCommands();
 			
-			
 			if (ignoreCommands == false){
 				if (message.equalsIgnoreCase(".test")){
 					return;

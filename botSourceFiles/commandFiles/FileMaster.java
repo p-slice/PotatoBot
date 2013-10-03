@@ -1,6 +1,7 @@
 package commandFiles;
 
 import java.io.File;
+
 import org.pircbotx.*;
 import org.pircbotx.hooks.ListenerAdapter;
 import org.pircbotx.hooks.WaitForQueue;
@@ -16,9 +17,10 @@ public class FileMaster extends ListenerAdapter{
 	
     public void onMessage(MessageEvent event) throws Exception {
     	
-    	String masterName = event.getUser().getLogin().toString();
-        String masterList = sourceFiles.UserList.getMasterList();
+    	String userName = event.getUser().getNick().toString();
         String ownNick = event.getBot().getNick().toString();
+        
+        boolean isMaster = sourceFiles.UserList.isMaster(userName);
         
 		String message = event.getMessage();
 		String[] messageSplit = message.split("[ ]");
@@ -27,7 +29,8 @@ public class FileMaster extends ListenerAdapter{
 		
 		Channel chanName = event.getChannel();
 		
-		if (masterList.contains(masterName) && message.startsWith(ownNick + ",")){
+		if (isMaster == true
+				&& message.startsWith(ownNick + ",")){
 			if (command.equalsIgnoreCase("Read")){
 				File f = new File("C:\\PotatoBot Files\\" + fileName + ".txt");				
 				if(!f.exists()){

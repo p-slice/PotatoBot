@@ -9,20 +9,29 @@ public class PublicMaster extends ListenerAdapter{
 	
     public void onMessage(MessageEvent event) throws Exception {
     	
-        String masterList = sourceFiles.UserList.getMasterList();	
-		String message = event.getMessage();
-		String masterName = event.getUser().getLogin().toString();
-		Channel chanName = event.getChannel();
-		String[] messageSplit = message.split("[ ]");
-		String command = messageSplit[1];
+    	String message = event.getMessage();
+    	String[] messageSplit = message.split("[ ]");
+    	String command = messageSplit[1];
+    	
+        String userName = event.getUser().getNick().toString();
 		String ownNick = event.getBot().getNick().toString();
 		
-		if (masterList.contains(masterName) && message.startsWith(ownNick + ",")){
+		boolean isMaster = sourceFiles.UserList.isMaster(userName);
+		
+		Channel chanName = event.getChannel();
+		
+		if (isMaster == true
+				&& message.startsWith(ownNick + ",")){
 			
 			if (command.equalsIgnoreCase("go") && messageSplit[2].equalsIgnoreCase("away")) {
 				String quitMessage = textFiles.RandomFileReader.getRandMessage("QuitMessage1");
 				event.getBot().sendMessage(chanName, quitMessage);
 				event.getBot().quitServer("Bai bai");
+			}
+			if (command.equalsIgnoreCase("you're") && messageSplit[2].equalsIgnoreCase("fired")) {
+				String quitMessage = textFiles.RandomFileReader.getRandMessage("QuitMessage2");
+				event.getBot().sendMessage(chanName, quitMessage);
+				event.getBot().quitServer("G'day, I say!");
 			}
 			if (command.equalsIgnoreCase("kick")) {
 				String kickReason = textFiles.RandomFileReader.getRandMessage("KickMessage");
@@ -46,11 +55,16 @@ public class PublicMaster extends ListenerAdapter{
 				return;
 			}
 		}
-		if (!masterList.contains(masterName)){
+		if (isMaster == false){
 			
 			if (message.equalsIgnoreCase("PotatoBot, go away")) {
 				String antiQuit = textFiles.RandomFileReader.getRandMessage("AntiQuitMessage1");
 				event.getBot().sendMessage(chanName, antiQuit);
+				return;
+			}
+			if (command.equalsIgnoreCase("you're") && messageSplit[2].equalsIgnoreCase("fired")) {
+				String quitMessage = textFiles.RandomFileReader.getRandMessage("AntiQuitMessage2");
+				event.getBot().sendMessage(chanName, quitMessage);
 				return;
 			}
 			if (message.startsWith("PotatoBot, kick")) {

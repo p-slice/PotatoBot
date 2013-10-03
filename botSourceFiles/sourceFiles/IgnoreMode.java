@@ -24,7 +24,7 @@ public class IgnoreMode  extends ListenerAdapter{
 			ignoreInChat = toggled;
 	}
 	public static String getIgnorePlayers(){
-		String ignorePlayers = "FoxBot, TheReverend403, PotatoBot";
+		String ignorePlayers = "PotatoBot";
 		return ignorePlayers;
 	}
 	public static boolean getIgnoreInChat(){		

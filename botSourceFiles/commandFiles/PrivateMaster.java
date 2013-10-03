@@ -14,14 +14,16 @@ public class PrivateMaster extends ListenerAdapter {
 	
 	public void onPrivateMessage(PrivateMessageEvent event){
 		
-		String masterName = event.getUser().getLogin().toString();
 		String masterList = sourceFiles.UserList.getMasterList();
 		String ownNick = event.getBot().getNick().toString();
 		
 		String message = event.getMessage();
 		String[] messageSplit = message.split("[ ]");
 		
-		if (masterList.contains(masterName)){
+		String userName = event.getUser().getNick().toString();
+		boolean isMaster = sourceFiles.UserList.isMaster(userName);
+		
+		if (isMaster == true){
 			
 			if (message.startsWith(".")){
 				
@@ -79,11 +81,11 @@ public class PrivateMaster extends ListenerAdapter {
 					return;
 				}
 				if (command.equalsIgnoreCase(".Whois")){
-					User userName = event.getBot().getUser(messageSplit[1]);
-					event.respond("Nickname: " + userName.getNick().toString());
-					event.respond("Login: " + userName.getLogin().toString());
-					event.respond("Real name: " + userName.getRealName().toString());
-					event.respond("Hostmask: " + userName.getHostmask().toString());
+					User userNick = event.getBot().getUser(messageSplit[1]);
+					event.respond("Nickname: " + userNick.getNick().toString());
+					event.respond("Login: " + userNick.getLogin().toString());
+					event.respond("Real name: " + userNick.getRealName().toString());
+					event.respond("Hostmask: " + userNick.getHostmask().toString());
 					return;
 				}
 				return;
