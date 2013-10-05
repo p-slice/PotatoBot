@@ -28,7 +28,7 @@ public class PublicMaster extends ListenerAdapter{
 				event.getBot().sendMessage(chanName, quitMessage);
 				event.getBot().quitServer("Bai bai");
 			}
-			if (command.equalsIgnoreCase("you're") && messageSplit[2].equalsIgnoreCase("fired")) {
+			if (command.equalsIgnoreCase("you're") && messageSplit[2].toLowerCase().startsWith("fired")) {
 				String quitMessage = textFiles.RandomFileReader.getRandMessage("QuitMessage2");
 				event.getBot().sendMessage(chanName, quitMessage);
 				event.getBot().quitServer("G'day, I say!");

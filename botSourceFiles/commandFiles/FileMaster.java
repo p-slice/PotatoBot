@@ -96,7 +96,7 @@ public class FileMaster extends ListenerAdapter{
 							return;
 						}
 						if (currentEvent.getMessage().equalsIgnoreCase("Yes")){
-							event.getBot().sendMessage(chanName, "Saving file...");
+							event.getBot().sendMessage(chanName, "Saved new file, " + fileName + ".txt.");
 							textFiles.FileOutput.saveText(fileName, saveText);
 							queue.close();
 							return;

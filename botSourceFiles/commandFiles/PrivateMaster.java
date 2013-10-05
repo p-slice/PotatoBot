@@ -77,7 +77,8 @@ public class PrivateMaster extends ListenerAdapter {
 					return;
 				}
 				if (command.equalsIgnoreCase(".masters")){
-					event.respond(masterList);
+					interfaceFiles.Launcher.sendMessage(masterList);
+					//event.respond(masterList);
 					return;
 				}
 				if (command.equalsIgnoreCase(".Whois")){

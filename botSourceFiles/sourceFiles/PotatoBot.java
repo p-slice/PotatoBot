@@ -3,11 +3,17 @@ package sourceFiles;
 import org.pircbotx.PircBotX;
 import org.pircbotx.cap.SASLCapHandler;
 
-public class PotatoBot {
+public class PotatoBot {	
 
 	public static void main(String[] args) {
 		
-		String[] botInfo = textFiles.FileReader.getBotInfo();
+		javax.swing.SwingUtilities.invokeLater(new Runnable(){
+			public void run(){
+				interfaceFiles.Launcher.newWindow();
+			}
+		});
+		
+		String[] botInfo = textFiles.FileReader.wholeText("botInfo");
 		//Bot info is kept in seperate files as it contains private info.
 		PircBotX potatoBot = new PircBotX();
     
@@ -34,4 +40,5 @@ public class PotatoBot {
             ex.printStackTrace();
 		}
 	}
+	public static final PircBotX PotatoBot = new PircBotX();
 }

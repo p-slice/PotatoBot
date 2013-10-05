@@ -50,20 +50,19 @@ public class GeneralMaster extends ListenerAdapter{
 					return;
 				}
 				if (message.equalsIgnoreCase(".commands")){
-					String [] stringArray = textFiles.FileReader.getCommandList();
+					String [] stringArray = textFiles.FileReader.wholeText("commandList");
 					for(int i = 0; i < stringArray.length; i++){
 						event.getBot().sendNotice(userName, stringArray[i]);
 					}
-					return;
 				}
 				if (message.equalsIgnoreCase(".math help")){
-					String [] stringArray = textFiles.FileReader.getMathHelp();
+					String [] stringArray = textFiles.FileReader.wholeText("mathBotHelp");
 					for(int i = 0; i < stringArray.length; i++){
 						event.getBot().sendNotice(userName, stringArray[i]);
 					}
 				}
 				if (message.equalsIgnoreCase(".Version")){
-					String[] version = textFiles.FileReader.getBotInfo();
+					String[] version = textFiles.FileReader.wholeText("botInfo");
 					event.getBot().sendMessage(chanName, "Currently running " + version[6]);
 				}
 			}

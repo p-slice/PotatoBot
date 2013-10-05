@@ -18,6 +18,12 @@ public class EventReply extends ListenerAdapter{
 		boolean ignoreEvents = sourceFiles.IgnoreMode.getIgnoreEvents();
 		String ignorePlayers = sourceFiles.IgnoreMode.getIgnorePlayers();	
 		
+		
+		if (!userName.equalsIgnoreCase(ownNick))
+			interfaceFiles.Launcher.sendMessage(userName + " just joined " + event.getChannel().getName().toString());
+		else
+			interfaceFiles.Launcher.sendMessage(" I just joined " + event.getChannel().getName().toString());
+		
 		if (!ignorePlayers.contains(masterName)
 				&& (ignoreEvents == false)){
 			
@@ -39,6 +45,8 @@ public class EventReply extends ListenerAdapter{
 		String beforeNick = event.getOldNick();
 		String afterNick = event.getNewNick();
 		String[] split = beforeNick.split("\\|");
+		
+		interfaceFiles.Launcher.sendMessage(beforeNick + " is now known as " + afterNick);
 		
 		boolean ignoreEvents = sourceFiles.IgnoreMode.getIgnoreEvents();
 		boolean isMaster = sourceFiles.UserList.isMaster(beforeNick);
@@ -70,11 +78,10 @@ public class EventReply extends ListenerAdapter{
 		String message = event.getMessage();
 		String userName = event.getUser().getNick().toString();
 		String chanName = event.getChannel().getName().toString();
-		String ownNick = event.getBot().getNick().toString();
 		boolean ignoreRelay = sourceFiles.IgnoreMode.getIgnoreRelay();
 		
-		if (ignoreRelay == false && !userName.equals("p_slice") && !message.startsWith(ownNick + ",")){
-			event.getBot().sendNotice("p_slice", "<" + chanName + "> " + userName + ": " + message);
+		if (ignoreRelay == false){
+			interfaceFiles.Launcher.sendMessage("<" + chanName + "> " + userName + ": " + message);
 		}
 	}
 }

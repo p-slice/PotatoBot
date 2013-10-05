@@ -15,13 +15,13 @@ public class IgnoreMode  extends ListenerAdapter{
 		if (type.equalsIgnoreCase("Chat"))
 			ignoreInChat = toggled;
 		if (type.equalsIgnoreCase("PMs"))
-			ignoreInChat = toggled;
+			ignorePMs = toggled;
 		if (type.equalsIgnoreCase("Events"))
-			ignoreInChat = toggled;
+			ignoreEvents = toggled;
 		if (type.equalsIgnoreCase("Commands"))
-			ignoreInChat = toggled;
+			ignoreCommands = toggled;
 		if (type.equalsIgnoreCase("Relay"))
-			ignoreInChat = toggled;
+			ignoreRelay = toggled;
 	}
 	public static String getIgnorePlayers(){
 		String ignorePlayers = "PotatoBot";

@@ -56,41 +56,4 @@ public class FileReader{
 		}
 		return "No link by that title!";
 	}
-	
-    public static String[] getCommandList(){
-    	Charset charset = Charset.defaultCharset();
-    	Path filePath = new File("C:\\PotatoBot Files\\CommandList.txt").toPath();
-		List<String> stringList = null;
-		try {
-			stringList = Files.readAllLines(filePath, charset);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		String[] stringArray = stringList.toArray(new String[]{});
-		return stringArray;
-    }
-    public static String[] getMathHelp(){
-    	Charset charset = Charset.defaultCharset();
-    	Path filePath = new File("C:\\PotatoBot Files\\MathBotHelp.txt").toPath();
-		List<String> stringList = null;
-		try {
-			stringList = Files.readAllLines(filePath, charset);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		String[] stringArray = stringList.toArray(new String[]{});
-		return stringArray;
-    }
-    public static String[] getBotInfo(){
-    	Charset charset = Charset.defaultCharset();
-    	Path filePath = new File("C:\\PotatoBot Files\\BotInfo.txt").toPath();
-		List<String> stringList = null;
-		try {
-			stringList = Files.readAllLines(filePath, charset);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		String[] stringArray = stringList.toArray(new String[]{});
-		return stringArray;
-    }
 }
