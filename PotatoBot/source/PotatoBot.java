@@ -18,7 +18,8 @@ public class PotatoBot {
 		String[] botInfo = textFiles.FileReader.wholeText("botInfo");
 		//Bot info is kept in seperate files as it contains private info.
     
-		PotatoBot.getListenerManager().addListener(new source.EventData());
+		PotatoBot.getListenerManager().addListener(new data.EventData());
+		PotatoBot.getListenerManager().addListener(new data.MessageData());
 		
 		PotatoBot.setName(botInfo[0]);
 		PotatoBot.setLogin(botInfo[1]);

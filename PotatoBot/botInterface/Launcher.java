@@ -64,12 +64,8 @@ public class Launcher extends JPanel implements ActionListener{
 			
 		}
 		
-		botInterface.Launcher.sendMessage(text);
+		botInterface.Output.sendMessage(text);
 		inputArea.setText("");
 		
-	}
-	
-	public static void sendMessage(String text){
-		outputArea.append(text + NEWLINE);
 	}
 }
