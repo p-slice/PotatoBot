@@ -1,4 +1,4 @@
-package commandFiles;
+package commands;
 
 import java.io.File;
 
@@ -20,7 +20,7 @@ public class FileMaster extends ListenerAdapter{
     	String userName = event.getUser().getNick().toString();
         String ownNick = event.getBot().getNick().toString();
         
-        boolean isMaster = sourceFiles.UserList.isMaster(userName);
+        boolean isMaster = source.UserList.isMaster(userName);
         
 		String message = event.getMessage();
 		String[] messageSplit = message.split("[ ]");

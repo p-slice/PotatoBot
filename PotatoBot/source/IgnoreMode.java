@@ -1,4 +1,4 @@
-package sourceFiles;
+package source;
 
 import org.pircbotx.hooks.ListenerAdapter;
 

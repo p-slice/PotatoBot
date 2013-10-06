@@ -1,4 +1,4 @@
-package interfaceFiles;
+package botInterface;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -60,7 +60,11 @@ public class Launcher extends JPanel implements ActionListener{
 	
 	public void actionPerformed(ActionEvent evt){
 		String text = inputArea.getText();
-		interfaceFiles.Analyzer.doCommand(text);
+		if (text.startsWith("/")){
+			
+		}
+		
+		botInterface.Launcher.sendMessage(text);
 		inputArea.setText("");
 		
 	}

@@ -1,4 +1,4 @@
-package sourceFiles;
+package source;
 
 import java.io.*;
 import java.nio.charset.Charset;
@@ -45,6 +45,22 @@ public class UserList {
 	
 	public static boolean isMaster(String userName){
 		Path filePath = new File("C:\\PotatoBot Files\\MasterList.txt").toPath();
+		List<String> stringList = null;
+		try {
+			stringList = Files.readAllLines(filePath, charset);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		String[] stringArray = stringList.toArray(new String[]{});
+		for(int i = 0; i < stringArray.length; i++){
+			if (stringArray[i].contains(userName)){
+				return true;
+			}
+		}
+		return false;
+	}
+	public static boolean isIgnoring(String userName){
+		Path filePath = new File("C:\\PotatoBot Files\\IgnoreList.txt").toPath();
 		List<String> stringList = null;
 		try {
 			stringList = Files.readAllLines(filePath, charset);

@@ -1,7 +1,7 @@
-package commandFiles;
+package commands;
 
-public class MathBot {
-	
+public class Solve {
+
 	public static String solve(String operation, double a, double b){
 		String result = null;
 		
