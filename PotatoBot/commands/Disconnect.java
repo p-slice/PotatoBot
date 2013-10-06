@@ -10,6 +10,9 @@ public class Disconnect {
 	
 	public static void disconnect(String chanName, String quitMessage){
 		bot.sendMessage(chanName, quitMessage);
-		bot.quitServer("Bai bai");
+		bot.quitServer("Disconnecting.");
+	}
+	public static void disconnectFull(){
+		bot.quitServer("Disconnecting");
 	}
 }

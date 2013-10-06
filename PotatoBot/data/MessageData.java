@@ -11,7 +11,7 @@ public class MessageData extends ListenerAdapter{
 		String chanName = event.getChannel().getName().toString();
 		String action = event.getAction();
 		
-		botInterface.Output.sendMessage("(" + chanName + ") " + userName + " " + action);
+		botInterface.Output.sendMessage("(" + chanName + ") *" + userName + " " + action);
 	}
 	public void onMessage(MessageEvent event){
 		String userName = event.getUser().getNick().toString();

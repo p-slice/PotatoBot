@@ -22,6 +22,8 @@ public class Launcher extends JPanel implements ActionListener{
 	public static void newWindow(){
 		JFrame baseFrame = new JFrame("PotatoBot Interface");
 		
+		baseFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
 		JComponent newContentPane = new Launcher();
 		newContentPane.setOpaque(true);
 		baseFrame.setContentPane(newContentPane);
@@ -61,11 +63,12 @@ public class Launcher extends JPanel implements ActionListener{
 	public void actionPerformed(ActionEvent evt){
 		String text = inputArea.getText();
 		if (text.startsWith("/")){
-			
+			botInterface.Input.doCommand(text);
 		}
-		
-		botInterface.Output.sendMessage(text);
+		else{
+			commands.DoChat.doChat(text);
+			botInterface.Output.sendMessage(text);
+		}
 		inputArea.setText("");
-		
 	}
 }
