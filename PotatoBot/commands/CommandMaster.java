@@ -8,7 +8,7 @@ public class CommandMaster {
 	
 	private static PircBotX bot = PotatoBot.PotatoBot;
 	
-	public static void doCommand(String chanName, String userName, String ownNick, String message, boolean isMaster){
+	public static void doCommand(String chanName, String userName, String ownNick, String message, boolean isMaster) throws InterruptedException{
 		
 		String[] messageSplit = message.split("[ ]");
 		String command = messageSplit[1];
@@ -49,10 +49,12 @@ public class CommandMaster {
 				commands.Kick.kick(chanName, userName, kickReason);
 			}			
 			if (command.equalsIgnoreCase("Read")){
-				//Coming soon
+				String fileName = messageSplit[2];
+				commands.Read.read(chanName, message, fileName, userName);
 			}
 			if (command.equalsIgnoreCase("Save")){
-				//Coming soon
+				String fileName = messageSplit[2];
+				commands.Save.save(chanName, message, fileName, userName);
 			}
 			if (command.equalsIgnoreCase("Edit")){
 				//Coming soon

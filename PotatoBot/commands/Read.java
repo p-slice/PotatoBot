@@ -15,7 +15,7 @@ public class Read {
 	private static PircBotX bot = PotatoBot.PotatoBot;
 	
 	@SuppressWarnings("rawtypes")
-	public static void read(String chanName, String message, String fileName) throws InterruptedException{
+	public static void read(String chanName, String message, String fileName, String userName) throws InterruptedException{
 		
 		String[] messageSplit = message.split("[ ]");
 		
@@ -27,16 +27,17 @@ public class Read {
 		if (messageSplit.length == 3){
 			String[] wholeText = textFiles.FileReader.wholeText(fileName);
 			if (wholeText.length > 3){
-				bot.sendMessage(chanName, "That's a fairly big file. Still want me to read it?");
+				bot.sendMessage(chanName, "That's a fairly big file (" + wholeText.length + " lines). Still want me to read it?");
 				WaitForQueue queue = new WaitForQueue(bot);
 				while (true) {
 					MessageEvent currentEvent = queue.waitFor(MessageEvent.class);
-					if (currentEvent.getMessage().equalsIgnoreCase("no")){
+					boolean isMaster = source.UserList.isMaster(userName);
+					if (currentEvent.getMessage().equalsIgnoreCase("no") && isMaster == true){
 						bot.sendMessage(chanName, "Good idea.");
 						queue.close();
 						return;
 					}
-					if (currentEvent.getMessage().equalsIgnoreCase("yes")){
+					if (currentEvent.getMessage().equalsIgnoreCase("yes") && isMaster == true){
 						bot.sendMessage(chanName, "Well, here goes...");
 						queue.close();
 						for(int i = 0; i < wholeText.length; i++){

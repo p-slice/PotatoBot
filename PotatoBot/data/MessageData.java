@@ -13,7 +13,7 @@ public class MessageData extends ListenerAdapter{
 		
 		botInterface.Output.sendMessage("(" + chanName + ") *" + userName + " " + action);
 	}
-	public void onMessage(MessageEvent event){
+	public void onMessage(MessageEvent event) throws InterruptedException{
 		String userName = event.getUser().getNick().toString();
 		String ownName = event.getBot().getNick().toString();
 		

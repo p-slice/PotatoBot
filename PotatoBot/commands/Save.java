@@ -15,7 +15,7 @@ public class Save {
 	private static PircBotX bot = PotatoBot.PotatoBot;
 	
 	@SuppressWarnings("rawtypes")
-	public static void save(String chanName, String message, String fileName) throws InterruptedException{
+	public static void save(String chanName, String message, String fileName, String userName) throws InterruptedException{
 		
 		String[] messageSplit = message.split("[ ]");
 		
@@ -29,12 +29,13 @@ public class Save {
 			WaitForQueue queue = new WaitForQueue(bot);
 			while (true) {
 				MessageEvent currentEvent = queue.waitFor(MessageEvent.class);
-				if (currentEvent.getMessage().equalsIgnoreCase("No")){
+				boolean isMaster = source.UserList.isMaster(userName);
+				if (currentEvent.getMessage().equalsIgnoreCase("No") && isMaster == true){
 					bot.sendMessage(chanName, "Aborting save.");
 					queue.close();
 					return;
 				}
-				if (currentEvent.getMessage().equalsIgnoreCase("Yes")){
+				if (currentEvent.getMessage().equalsIgnoreCase("Yes") && isMaster == true){
 					bot.sendMessage(chanName, "Saved new file, " + fileName + ".txt.");
 					textFiles.FileOutput.saveText(fileName, saveText);
 					queue.close();
