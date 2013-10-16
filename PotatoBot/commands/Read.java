@@ -10,8 +10,6 @@ import source.PotatoBot;
 
 public class Read {
 	
-	//This is incomplete, will be finishing later.
-	
 	private static PircBotX bot = PotatoBot.PotatoBot;
 	
 	@SuppressWarnings("rawtypes")

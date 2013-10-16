@@ -9,8 +9,6 @@ import org.pircbotx.hooks.events.MessageEvent;
 import source.PotatoBot;
 
 public class Save {
-	
-	//This is incomplete, will be finishing later.
 
 	private static PircBotX bot = PotatoBot.PotatoBot;
 	
