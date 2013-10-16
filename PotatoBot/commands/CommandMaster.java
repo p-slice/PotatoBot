@@ -80,6 +80,10 @@ public class CommandMaster {
 					commands.Kick.kick(chanName, userName, kickReason);
 					return;
 				}
+				case "rename":
+					String newNick = messageSplit[2];
+					commands.Rename.reName(newNick);
+					return;
 				case "read":{
 					fileName = messageSplit[2];
 					commands.Read.read(chanName, message, fileName, userName);
